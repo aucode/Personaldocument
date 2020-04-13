@@ -1,7 +1,7 @@
 ### SpringMVC + Spring + [MyBatis (SSM)](https://mybatis.org/mybatis-3/zh/index.html)
 > [`MyBatis `](https://mybatis.org/mybatis-3/zh/index.html) ORM 框架 （对象关系映射）
 
-```
+```java
   表现层 =>   业务层 => 持久层 
 SpringMVC(controller) => Spring(con) => MyBatis (dao)
 包 调用关系
@@ -34,7 +34,7 @@ SpringMVC(controller) => Spring(con) => MyBatis (dao)
 
 - 创建表接口xml文件 
 > 创建 `XxxxMapper.xml `文件； 该文件编写mybatis中的mapper 接口里的方法，为接口里的方法提供一个对应sql语句 
-```
+```java
 public interface TestService {
 	User getUserByCodePassword(User u);
 }
@@ -43,7 +43,7 @@ public interface TestService {
 
 
 #### 建立sql映射文件 `Mapper.xml 表文件配置`
-```
+```xml
 
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
@@ -91,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 ```
 #### 建立sqlMapConfig.xml文件 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -120,7 +120,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 ```
 #### 测试 
-```
+```java
     @Test 
     public void text(){
         //1.sqlSessionFactoryBuilder(构造器) 
@@ -155,7 +155,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 ### mybatis 整合 Spring 
 
 #### 导包
-```
+```yml
 mybatis-spring 
 spring-ioc
 spring-aop
@@ -166,7 +166,7 @@ spring-context
 ####  整合 方法一
 
 #### 编写Mapper 的实现类 （xxxImpl 实现类 与SSH框架类似） 
-```
+```java
 //接口
 public interface TestService {
 	User saveuser(User u);
@@ -187,14 +187,14 @@ public class CustomerMapperImpl extends SqlSessionDaoSupport implements Customer
 ```
 
 #### 编写 applicationContext.xml 在这里配置连接池 （完成可删除sqlMapConfig.xml文件 ）
-```
-db.properties文件：
+```xml
+# db.properties文件：
 jdbc.jdbcUrl=jdbc:mysql:///vb
 jdbc.driverClass=com.mysql.jdbc.Driver
 jdbc.user=root
 jdbc.password=root
 
-applicationContext.xml文件：
+# applicationContext.xml文件：
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:context="http://www.springframework.org/schema/context"
@@ -236,7 +236,7 @@ applicationContext.xml文件：
 
 ```
 #### 测试 
-```
+```java
     @Test 
     public void test(){
         //1.加载spring配置
@@ -257,7 +257,7 @@ applicationContext.xml文件：
 ```
 
 ####  整合 方法二  applicationContext.xml添加
-```
+```xml
 <!--配置Mapper接口-->
 <bean id= "cus tomerMapper" class= "org. mybatis. spring . mapper . MapperFactoryBean">
     <!-- 关联Mapper接口-->
@@ -271,7 +271,7 @@ applicationContext.xml文件：
 
 
 ####  整合 方法三 Mapper接口扫码 
-```
+```xml
 <!-- Mapper接口的扫描-->
 <bean class="org. mybatis. spring. mapper. MapperScannerConfigurer">
 <!--配置Mapper接口所在包路径-->
@@ -299,7 +299,7 @@ applicationContext.xml文件：
 ### [`Maven 库`](https://mvnrepository.com/) 
 > 囊括所有开源的`jar `工具包 
 + 使用 
-````
+````xml
 1.解压 apache-maven-3.5.2-bin.zip 和 MavenRepository.rar 
 2.进入 apache-maven-3.5.2 => conf => settings.xml 在54行添加  <localRepository>解压出来 MavenRepository 的路径</localRepository>
     例如：
@@ -320,7 +320,7 @@ applicationContext.xml文件：
 2) src/main/resources xml放配置文件
 
 ##### 1）导入jar包: 在项目的 Pom.xml文件 添加
-````
+````xml
  <dependencies>
   	<dependency>
 	    <groupId>org.springframework</groupId>
@@ -394,7 +394,7 @@ applicationContext.xml文件：
   </dependencies>
 ````
 ##### 2）配置Web.xml文件 
-````
+````xml
 
   <context-param>
   	<param-name>contextConfigLocation</param-name>
@@ -426,7 +426,7 @@ applicationContext.xml文件：
 ````
 ##### 3）Spring 的核心配置文件 `applicationContext.xml ` 
 - [`添加约束 `](https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#beans-annotation-config)
-````
+````xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -442,7 +442,7 @@ applicationContext.xml文件：
 ````
 
 - 配置文件 
-````
+````xml
 <!-- 
 		扫描包
 	 -->
@@ -477,7 +477,7 @@ applicationContext.xml文件：
 	  </bean>
 ````
 ##### MyBatis核心配置文件 SqlMapConfig.xml 文件
-````
+````xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -488,7 +488,7 @@ applicationContext.xml文件：
 ````
 ##### SpringMVC.xml 
 - [`导入约束 `](https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config)
-````
+````xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -504,7 +504,7 @@ applicationContext.xml文件：
 </beans>
 ````
 - 文件配置
-````
+````xml
 <context:component-scan base-package="com.neuedu.controller"></context:component-scan>
 	
 	<mvc:annotation-driven />
@@ -531,7 +531,7 @@ applicationContext.xml文件：
 
 ````
 ##### [`mapper约束文件`](https://mybatis.org/mybatis-3/zh/getting-started.html)
-````
+````xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"

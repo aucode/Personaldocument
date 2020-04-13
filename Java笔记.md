@@ -100,7 +100,7 @@ ____________________
 6. 空常量：null 没有任何数据，也不能被使用。
 
 ### 常量演示 
-```
+```java
 public class DemoConst{
     public static void main(String[] args){
         //# 字符串常量                      输出
@@ -134,7 +134,7 @@ public class DemoConst{
 > 在程序运行中，可以发生改变的量。 
 
 ### 创建变量 
-```
+```java
     #方法一 
         数据类型 变量名;        # 创建变量
         变量名 = 值;            # 赋值 
@@ -253,7 +253,7 @@ public class DemoConst{
 >>> A. 如果【前++】，先加一再使用。
 >>> B. 如果【后++】，先使用再加一。
 
-```
+```java
 public class Perator{
     public static void main(String[] args){
         int num = 10;

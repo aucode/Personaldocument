@@ -41,7 +41,7 @@
 - 变量：可变的量，在编程语言中，变量就是一个名字，原来存储和代表不同的枝
 - 创建变量方式：var/let/const/function/import/class 
 
-```
+```javascript
     //ES3
     var a=12;//创建一个变量a，并赋值12
     console.log(a);//输出变量a
@@ -67,21 +67,21 @@
 ### JS中的命名规范
 > 注意命名规范：区分大小写/驼峰法/关键字保留字
 - 严格区分大小写
-```
+```javascript
 let Test=100;
 console.log(test); //=>无法输出 Test≠test 
 
 ```
 
 - 使用数字、字母、下划线、$,数字不能开头
-```
+```javascript
 let $box;//=>一般用JQ获取的用$开头
 let _box;//=>一般公共变量都是_开头（全局变量）
 
 ```
 - 驼峰法
 >首字母小写，其余每一个有意义字母的首字母都要大写（密码尽可能明显，使用英问单词）
-```
+```javascript
 let studentInformation;
 let studentInfo;
 //常用的缩写：add /insert/create/new、update、delete/del/remove/rm(删除)、sel/select/query/get（查询）、info(信息)...
@@ -109,7 +109,7 @@ let studentInfo;
 ### NaN
 - not a number：不是一个数字 
     + NaN和任何值（包括自己）都不相等：即NaN!=NaN 
-```
+```javascript
  console.log('AA' == NaN); //输出 => false
  console.log(10 == NaN); //输出 => false
  console.log(NaN == NaN); //输出 => false 
@@ -118,7 +118,7 @@ let studentInfo;
 ### isNaN
 - 检测一个值是否为有效数字,如果不是有效数字返回true,反值是有效数字返回false（不是数字true，是数字false）
     + isNaN检测机制：首先会检测值是否位数字类型,如果不是,先基于Number()这个方法,把值转换为数字,然后再检查
-```
+```javascript
 console.log(isNaN(10)); //=>false 
 console.log(isNaN('AA')); //=>true 
 
@@ -145,7 +145,7 @@ console.log(isNaN('10')); //=>false
 
 ============`Number`============
 > 浏览器内置对象`V8引擎底层机制`
-```
+```javascript
 //字符串转换位数字
 console.log(Number('12.5')); //=>12.5 
 console.log(Number('12.5px')); //=>NaN 
@@ -181,7 +181,7 @@ console.log(Number([12,23])); //=>NaN
     > 从`左到右查`找有效数字直到遇到非有效字符,停止查找（不管后面是否还有数字,都不在找）
 
 ============`parseInt/parseFloat`============
-```
+```javascript
 let str='12.5px'; 
 console.log(Number(str)); //=>NaN 
 console.log(parseInt(str)); //=>12 
@@ -200,7 +200,7 @@ console.log(parseFloat(true)); //=>NaN
 
 - val.toString() 
 > 注意：null和undefinde是`禁止直接toString`的，但是null和undefinde转换成字符串结果是`'null','undefinde'`。不能调用toString,`直接加`单引号或双引号
-```
+```javascript
 let a = 12; 
 console.log(a.tostring()); //=>'12' 
 console.log((NaN).tostring()); //=>'NaN' 
@@ -254,7 +254,7 @@ console.log(({name:'xxxx'}).tostring()); //=>"[object Object]"
 
 ### javaScript高阶函数 
 + ES6 for循环
-```
+```javascript
     //1.普通for循环
     for(let i = 0; i<=this.books ;i++){
         ......
@@ -273,7 +273,7 @@ console.log(({name:'xxxx'}).tostring()); //=>"[object Object]"
     > 知识 编程范式：命令编程/声明编程<br/>
       编程范式: 面向对象编程（第一公民：对象）/ 函数式编程（第一公民：函数）
 
-```
+```javascript
     //需求输出小于100的数，将小于100的数乘以2，输出汇总数
 
     //过滤  filter中的回调函数有一个要求：必须返回一个boolean
